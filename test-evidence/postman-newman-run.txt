@@ -1,0 +1,86 @@
+newman
+
+Assignment 6 - Tasks REST API
+
+❏ CRUD
+↳ Create task
+  POST http://localhost:3000/tasks [201 Created, 491B, 20ms]
+  ✓  Status is 201
+  ✓  Has id
+
+↳ List all tasks
+  GET http://localhost:3000/tasks [200 OK, 1.08kB, 3ms]
+  ✓  Status is 200
+  ✓  data is array
+
+↳ List tasks (filter by status)
+  GET http://localhost:3000/tasks?status=pending [200 OK, 640B, 2ms]
+  ✓  Status is 200
+
+↳ Get one task
+  GET http://localhost:3000/tasks/5 [200 OK, 441B, 2ms]
+  ✓  Status is 200
+  ✓  Correct task
+
+↳ Update task
+  PUT http://localhost:3000/tasks/5 [200 OK, 478B, 3ms]
+  ✓  Status is 200
+  ✓  Status updated
+
+↳ Delete task
+  DELETE http://localhost:3000/tasks/5 [200 OK, 480B, 3ms]
+  ✓  Status is 200
+
+❏ Errors
+↳ Get deleted task (404)
+  GET http://localhost:3000/tasks/5 [404 Not Found, 278B, 2ms]
+  ✓  Status is 404
+
+↳ Update missing task (404)
+  PUT http://localhost:3000/tasks/999999 [404 Not Found, 283B, 3ms]
+  ✓  Status is 404
+
+↳ Delete missing task (404)
+  DELETE http://localhost:3000/tasks/999999 [404 Not Found, 283B, 3ms]
+  ✓  Status is 404
+
+↳ Invalid id (400)
+  GET http://localhost:3000/tasks/abc [400 Bad Request, 294B, 2ms]
+  ✓  Status is 400
+
+↳ Create without title (400)
+  POST http://localhost:3000/tasks [400 Bad Request, 305B, 1ms]
+  ✓  Status is 400
+
+↳ Create with invalid values (400)
+  POST http://localhost:3000/tasks [400 Bad Request, 485B, 2ms]
+  ✓  Status is 400
+  ✓  Lists details
+
+↳ Malformed JSON (400)
+  POST http://localhost:3000/tasks [400 Bad Request, 286B, 2ms]
+  ✓  Status is 400
+
+↳ Unknown route (404)
+  GET http://localhost:3000/nothing-here [404 Not Found, 287B, 4ms]
+  ✓  Status is 404
+
+┌─────────────────────────┬─────────────────┬─────────────────┐
+│                         │        executed │          failed │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│              iterations │               1 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│                requests │              14 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│            test-scripts │              14 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│      prerequest-scripts │               0 │               0 │
+├─────────────────────────┼─────────────────┼─────────────────┤
+│              assertions │              19 │               0 │
+├─────────────────────────┴─────────────────┴─────────────────┤
+│ total run duration: 242ms                                   │
+├─────────────────────────────────────────────────────────────┤
+│ total data received: 2.73kB (approx)                        │
+├─────────────────────────────────────────────────────────────┤
+│ average response time: 3ms [min: 1ms, max: 20ms, s.d.: 4ms] │
+└─────────────────────────────────────────────────────────────┘

@@ -1,0 +1,30 @@
+{
+  "name": "tasks-rest-api",
+  "version": "1.0.0",
+  "description": "Assignment 6 - RESTful Tasks API with Express and SQLite",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "dev": "nodemon --watch src --exec \"node --disable-warning=ExperimentalWarning src/server.js\"",
+    "seed": "node --disable-warning=ExperimentalWarning scripts/seed.js",
+    "test": "node scripts/api-test.js"
+  },
+  "keywords": [
+    "express",
+    "rest",
+    "api",
+    "sqlite"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
